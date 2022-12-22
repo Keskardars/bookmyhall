@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block title %} | search results  {% endblock title %}
+{% block maindata %}
+<main id="main">
+    <!-- ======= Intro Single ======= -->
+    <section class="intro-single">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8">
+            <div class="title-single-box">
+              <h1 class="title-single">You Searched {{ venue_search.keyword }}</h1>
+              <span class="color-text-a">All Respected Results</span>
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-4">
+            <nav
+              aria-label="breadcrumb"
+              class="breadcrumb-box d-flex justify-content-lg-end"
+            >
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="index.html">Home</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  Search<id>
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Intro Single-->
+
+    <!-- =======  Blog Grid ======= -->
+    <section class="news-grid grid">
+      <div class="container">
+        <div class="row">
+        {% for venue in venue_search %}
+          <div class="col-md-4">
+            <div class="card-box-b card-shadow news-box">
+              <div class="img-box-b">
+                <img
+                  src="{{venue.list_image.url}}"
+                  alt=""
+                  class="img-b img-fluid"
+                  style="min-height:260px; max-height: 350px;"
+                />
+              </div>
+              <div class="card-overlay">
+                <div class="card-header-b">
+                  <div class="card-category-b">
+                    <a href="#" class="category-b">{{venue.Rating}}</a>
+                  </div>
+                  <div class="card-title-b">
+                    <h2 class="title-2">
+                      <a href="{% url 'venue_detail' venue.id %}"
+                        >{{venue.Venue_name}}<br />
+                        </a
+                      >
+                    </h2>
+                  </div>
+                  <div class="card-date">
+                    <span class="date-b">{{venue.Venue_location}}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </section>
+    <!-- End Blog Grid-->
+  </main>
+{% endblock maindata %}

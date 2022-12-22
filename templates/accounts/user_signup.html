@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% block title %} |user-signup  {% endblock title %}
+{% block maindata %}
+{% load static %}
+{% load socialaccount %}
+{% providers_media_js %}
+<link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+<section class="vh-100">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6 text-black">
+        
+        <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
+          
+          <form style="width: 23rem;" action="{% url 'user_register' %}" method="POST">
+            {% csrf_token %}
+            {% include 'includes/messages.html' %}
+        
+            {% for field in form %}
+              {% if field.errors %}
+                  {% for error in field.errors %}
+                      <li class="fadeout"  style="color: red;">{{error}}</li>
+                  {% endfor %}
+              {% endif %}
+             {% endfor %}
+  
+            <h3 class="fw-normal mb-1 pb-3" style="letter-spacing: 1px;">User Registration Form</h3>
+            <div class="form-outline mb">
+              <label class="form-label" for="username" name="username ">username</label>
+              {{ form.username }}
+            </div> 
+
+            <div class="form-outline">
+              <label class="form-label" for="first_Name" name="first_name">First Name</label>
+              {{ form.first_name }}
+            </div>
+
+            <div class="form-outline">
+              <label class="form-label" for="last_Name" name="last_name">Last Name</label>
+              {{ form.last_name }}
+            </div>
+            
+            <div class="form-outline">
+              <label class="form-label" for="email" name="email">Email address:</label>
+              {{ form.email }}
+            </div>
+            
+  
+              <div class="form-outline">
+                <label class="form-label" for="password" name="password">Password</label>
+                {{form.password}}
+              </div>
+
+              <div class="form-outline">
+                <label class="form-label" for="confirm_password" name="confirm_password">confirm Password</label>
+                {{form.confirm_password}}
+              </div>
+              <div class="pt-1 mb-1">
+                <button class="btn btn-info btn-lg btn-block" type="submit">register</button>
+                <b>or login with</b> 
+                <a href="{% provider_login_url 'google'  %}"><button type="button" class="btn btn-danger btn-md ">
+                  <i class="fa-brands fa-google-plus fa-2xl"></i>
+                </button></a>
+                <a href="{% provider_login_url 'facebook' method='js_sdk' %}"><button
+                type="button"
+                class="btn btn-primary btn-md m-1 align-center"
+                >
+                <i class="fa-brands fa-facebook fa-2xl"></i>
+              </button></a>
+            </div>
+            <p class="small mb-3 pb-lg-1"><a class="text-muted" href="#!">Forgot password?</a></p>
+            <p>Already have an account? <a href="{% url 'login' %}" class="link-info">Login here</a></p>
+            <h6><p>Are You Vendor? <a href="{% url 'vendor_register' %}" class="color-b">Join with Bookmyhall</a></p></h5>
+            </form>
+            
+          </div>
+          
+        </div>
+        <div class="col-sm-6 px-0 d-none d-sm-block mt-2">
+          <img src="{% static 'assets/img/er.png' %}"
+          alt="Login image" class="w-100 vh-100" style="object-fit: cover; object-position: center;">
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  {% endblock maindata %}

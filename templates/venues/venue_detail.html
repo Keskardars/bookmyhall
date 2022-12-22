@@ -1,0 +1,736 @@
+{% extends 'base.html' %}
+{% block title %} | venue_detail  {% endblock title %}
+{% block maindata %}
+{% load static %}
+<main id="main">
+    <!-- ======= Intro Single ======= -->  
+    <section class="intro-single">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-lg-8">
+                    <div class="title-single-box">
+                        <h1 class="title-single"><span  class="color-b">{{venue_detail.Venue_name }}</span></h1>
+                        <span class="color-text-a">{{venue_detail.Venue_location}}</span>
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-4">
+                    <nav
+                    aria-label="breadcrumb"
+                    class="breadcrumb-box d-flex justify-content-lg-end"
+                    >
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="{% url 'home' %}">Home</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                            {{venue_detail.Venue_name }}
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Intro Single-->
+    <!-- ======= Property Single ======= -->
+    <section class="property-single nav-arrow-b">
+    <div class="container">
+        <div class="row">
+          <div class="col-sm-16">
+              <div class="intro intro-carousel swiper position-relative rounded">
+                  <div class="swiper-wrapper">
+                    {% if venue_detail.banner_image1 %}  
+                      <div
+                      class="swiper-slide carousel-item-a intro-item bg-image"
+                      style="background-image: url({{ venue_detail.banner_image1.url }})"
+                      >
+                      {% endif %}
+                      <div class="overlay overlay-a"></div>
+                      <div class="intro-content display-table">
+                          
+                  </div>
+                </div>
+                 {% if venue_detail.banner_image2 %}
+                <div
+                class="swiper-slide carousel-item-a intro-item bg-image"
+                style="background-image: url({{ venue_detail.banner_image2.url }})"
+                >
+                {% endif %}
+                <div class="overlay overlay-a"></div>
+                <div class="intro-content display-table">
+                      
+                </div>
+            </div>
+            {% if venue_detail.banner_image3 %}
+            <div
+            class="swiper-slide carousel-item-a intro-item bg-image"
+            style="background-image: url({{ venue_detail.banner_image3.url }})"
+                >
+                {% endif %}  
+                <div class="overlay overlay-a"></div>
+                <div class="intro-content display-table">
+                  
+                </div>
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+</div>
+<!-- Background image -->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="row justify-content-between">
+                    <div class="col-md-5 col-lg-4">
+                        <div class="property-price d-flex justify-content-center foo">
+                          <div class="container d-flex justify-content-left mt-100">
+                            <div class= "summary-list">
+                                <div class="list">
+                                    <div class="content text-center">
+
+                                        <div class="ratings list">
+
+                                            <span class="product-rating"><span class="color-b">{{venue_detail.Rating}}</span><span>/5</span></span> 
+                                                <div class="rating-text">
+                                                    <a href="#top-reviews"><span>{{venue_detail.Rating}} ratings &{{venue_detail.Total_reviews}} reviews</span></a>
+                                              
+                                                </div> 
+                                        </div>
+                                        <div class="col-md-12 mt-3" align="center">
+                                            <a href="#contact"><button type="submit" class="btn btn-a" >
+                                             Check Availability
+                                            </button></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <div class="property-summary">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="title-box-d section-t4">
+                                <h3 class="title-d"><span  class="color-b">QUICK</span> OVERVIEW</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="summary-list">
+                        <ul class="list">
+                            <li class="d-flex justify-content-between">
+                                <strong class="color-b">TYPE OF HALL:</strong>
+                                <span class='color-b'>{{venue_detail.type_of_hall}}</span>
+                            </li>
+                            <li class="d-flex justify-content-between">
+                                <strong class='color-b'>Location:</strong>
+                                <span>{{venue_detail.Venue_location|slice:":34"}}</span>
+                            </li>
+                            <li class="d-flex justify-content-between">
+                                <strong class='color-b'>DINING HALL CAPACITY:</strong>
+                                <span>{{venue_detail.Dining_hall_capacity}} & More</span>
+                            </li>
+                            <li class="d-flex justify-content-between">
+                                <strong class='color-b'>Per Plate Prize:</strong>
+                                <span>{{venue_detail.per_plate_prize}}</span>
+                            </li>
+                            <li class="d-flex justify-content-between">
+                                <strong class='color-b'>Parking Capacity:</strong>
+                                <span
+                                >{{venue_detail.Parking_capacity}}
+                                <sup>2</sup>
+                                </span>
+                            </li>
+                            <li class="d-flex justify-content-between">
+                                <strong class='color-b'>Food Type available:</strong>
+                                <span>{{venue_detail.Food_type}}</span>
+                            </li>
+                            <li class="d-flex justify-content-between">
+                                <strong class='color-b'>Phone no:</strong>
+                                <span>{{venue_detail.phone}}</span>
+                            </li>
+                            {% comment %} <li class="d-flex justify-content-between">
+                                <strong>:</strong>
+                                <span>1</span>
+                            </li>  {% endcomment %}
+                        </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-7 col-lg-7 section-md-t3">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="title-box-d">
+                            <br>
+                            <h3 class="title-d"><span  class="color-b">Venue</span> Description</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="property-description">
+                  <p class="description color-text-a">
+                    </p>
+                    <p class="description color-text-a no-margin">
+                      {{venue_detail.About | safe }}
+                    </p>
+                </div>
+                <div class="row section-t3">
+                  <div class="col-sm-12">
+                    <div class="title-box-d">
+                      <h3 class="title-d"><span class="color-b">Amenities</span></h3>
+                    </div>
+                </div>
+                </div>
+                <div class="amenities-list color-text-a">
+                  {% spaceless %}
+                  <ul class="list-a no-margin">
+                    {% if venue_detail.Aminities != 'Dummy' %}
+                    <li>{{venue_detail.Aminities |slice:'0:1'|join:''}}</li>
+                    {% endif %}
+                    {% if venue_detail.Aminities != 'Dummy' %}
+                    <li>{{venue_detail.Aminities |slice:'1:2'|join:''}}</li>
+                    {% endif %}
+                    {% if venue_detail.Aminities != 'Dummy' %}
+                    <li>{{venue_detail.Aminities |slice:'2:3'|join:''}}</li>
+                    {% endif %}
+                    {% if venue_detail.Aminities != 'Dummy' %}
+                    <li>{{venue_detail.Aminities |slice:'3:4'|join:''}}</li>
+                    {% endif %}
+                    {% if venue_detail.Aminities != 'Dummy' %}
+                    <li>{{venue_detail.Aminities |slice:'4:5'|join:''}}</li>
+                    {% endif %}
+                  </ul>
+                  {% endspaceless %}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-10 offset-md-1">
+            <ul
+            class="nav nav-pills-a nav-pills mb-3 section-t3"
+            id="pills-tab"
+            role="tablist"
+            >
+            <li class="nav-item">
+                <a
+                class="nav-link active"
+                id="pills-video-tab"
+                data-bs-toggle="pill"
+                  href="#pills-video"
+                  role="tab"
+                  aria-controls="pills-video"
+                  aria-selected="true"
+                  >Videos</a
+                  >
+                </li>
+              <li class="nav-item">
+                <a
+                class="nav-link"
+                id="pills-plans-tab"
+                data-bs-toggle="pill"
+                href="#pills-plans"
+                role="tab"
+                aria-controls="pills-plans"
+                aria-selected="false"
+                >Extra Images</a
+                >
+            </li>
+            <li class="nav-item">
+                <a
+                class="nav-link"
+                id="pills-map-tab"
+                data-bs-toggle="pill"
+                href="#pills-map"
+                role="tab"
+                aria-controls="pills-map"
+                aria-selected="false"
+                >Find out on Map</a
+                >
+            </li>
+        </ul>
+            <div class="tab-content " id="pills-tabContent">
+                <div
+                class="tab-pane fade show active"
+                id="pills-video"
+                role="tabpanel"
+                aria-labelledby="pills-video-tab"
+                >
+                <iframe
+                src="{{venue_detail.vimeo_video}}"        
+                width="100%"
+                height="460"
+                frameborder="0"
+                webkitallowfullscreen
+                mozallowfullscreen
+                allowfullscreen
+                ></iframe>
+            </div>
+            <div
+            class="tab-pane fade"
+            id="pills-plans"
+            role="tabpanel"
+            aria-labelledby="pills-plans-tab"
+            <div class="row">
+                <div class="col-sm-16">
+                    <div class="intro intro-carousel swiper position-relative rounded">
+                        <div class="swiper-wrapper">
+                          {% if venue_detail.extra_image1 %}
+                          <div
+                          class="swiper-slide carousel-item-a intro-item bg-image"
+                          style="background-image: url({{ venue_detail.extra_image1.url }})"
+                          ></div>
+                          {% endif %}
+                          <div class="overlay overlay-a"></div>
+                          <div class="intro-content display-table">    
+                          </div>
+                          {% if venue_detail.extra_image2 %}
+                          <div
+                          class="swiper-slide carousel-item-a intro-item bg-image"
+                          style="background-image: url({{venue_detail.extra_image2.url}})"
+                          ></div>
+                          {% endif %}
+                          <div class="overlay overlay-a"></div>
+                          <div class="intro-content display-table">    
+                          </div>
+                          </div>
+                          {% if venue_detail.extra_image3 %}
+                          <div
+                          class="swiper-slide carousel-item-a intro-item bg-image"
+                          style="background-image: url({{venue_detail.extra_image3.url}})"
+                          ></div>
+                          {% endif %}
+                        </div>
+                    </div>
+                </div>
+            <div
+                class="tab-pane fade"
+                id="pills-map"
+                role="tabpanel"
+                aria-labelledby="pills-map-tab"
+                >
+                <iframe
+                src="{{venue_detail.map_location}}"
+                width="100%"
+                height="460"
+                frameborder="0"
+                style="border: 0"
+                allowfullscreen
+                ></iframe>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <br>
+    <br>
+          <h5 class="color-b">Top Reviews :</h5>
+            <div class="col-md-12 mt-2" align="right" id="top-reviews">
+             <p></p>
+            </div>
+            <br>
+            {% for review in reviews %}
+            <div class="review-list">
+                  <div>
+                    <div>
+                      <ul>
+                        <li>
+                          <div class="d-flex">
+                            <div class="left">
+                                <span>
+                                    <img src="{% static 'assets/img/person.jpg' %}" class="profile-pict-img img-fluid" alt="" />
+                                </span>
+                            </div>
+                            <div class="right">
+                                <h4>
+                                    {{review.user.first_name}}{{review.user.last_name}}
+                                    <span class="gig-rating text-body-2">
+                                        <svg xmlns="{% static 'assets/img/person.jpg' %}" viewBox="0 0 1792 1792" width="15" height="15">
+                                            <path
+                                                fill="currentColor"
+                                                d="M1728 647q0 22-26 48l-363 354 86 500q1 7 1 20 0 21-10.5 35.5t-30.5 14.5q-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z"
+                                            ></path>
+                                        </svg>
+                                        {{review.rating}}
+                                    </span>
+                                </h4>
+                                <div class="country d-flex align-items-center">
+                                    <span>
+                                        <img class="country-flag img-fluid" src="https://bootdey.com/img/Content/avatar/" />
+                                    </span>
+                                    <div class="country-name font-accent">{{review.subject}}</div>
+                                </div>
+                                <div class="review-description">
+                                    <p>
+                                       {{review.review}}
+                                    </p>
+                                </div>
+                                <span class="publish py-3 d-inline-block w-100">Published on {{review.created_date}} & <span class="color-b">updated on : {{review.updated_date}}</span></span>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+              {% endfor %}
+            </div>
+        <br>
+        {% include 'includes/messages.html' %}
+        <br>
+        <form action="{% url 'submit_review' venue_detail.id %}" method="POST">
+        {% csrf_token %}
+         <h6 class="color-b">Write Your Review:</h6>
+          <label for="what do you have experience about this venue"></label>
+          <div class="rate">
+            <input type="radio" name="rating" id="rating10" value="5" required><label for="rating10" title="5"></label>
+            <input type="radio" name="rating" id="rating9" value="4.5" required><label for="rating9" title="4.5" class="half"></label>
+            <input type="radio" name="rating" id="rating8" value="4" required><label for="rating8" title="4"></label>
+            <input type="radio" name="rating" id="rating7" value="3.5" required><label for="rating7" title="3.5" class="half"></label>
+            <input type="radio" name="rating" id="rating6" value="3" required><label for="rating6" title="3"></label>
+            <input type="radio" name="rating" id="rating5" value="2.5" required><label for="rating5" title="2.5" class="half"></label>
+            <input type="radio" name="rating" id="rating4" value="2" required><label for="rating4" title="2"></label>
+            <input type="radio" name="rating" id="rating3" value="1.5" required><label for="rating3" title="1.5" class="half"></label>
+            <input type="radio" name="rating" id="rating2" value="1" required><label for="rating2" title="1"></label>
+            <input type="radio" name="rating" id="rating1" value="0.5" required><label for="rating1" title="0.5" class="half"></label>
+          </div>
+          <br>
+              <div>
+                 Review Title:
+                <input type="text" class="form-control" name='subject' required>
+                review:
+                <textarea name="review" id="" rows="4"  class="form-control" required ></textarea>
+                <br>
+                {% if user.is_authenticated %}
+                <input type="submit" value="submit Review" class="btn btn-primary">
+                <br>
+                {% else %}
+                <p>You Must be Logged in To Post a Review <span class="color-b"><a href="{% url 'login' %}">Login Now</a></span></p>
+                {% endif %}
+                <br>
+              </div>
+        </form>
+        <br>
+        <!-- ======= Latest News Section ======= -->
+        <!-- Jumbotron -->
+        <div class="p-4 shadow-4 rounded-3" style="background-color: hsl(0, 0%, 94%);">
+        <h2 class='color-b'>Asked Queries & Solutions From Owner</h2>
+        <br>
+        <h6>What Types of Menues are available ?</h6>
+        <div class="amenities-list color-text-a">
+          {% spaceless %}
+          <ul class="list-a no-margin">
+            {% if venue_detail.menus %}
+            <li>{{venue_detail.menus |slice:'0:1'|join:''}}</li>
+            {% endif %}
+            {% if venue_detail.menus != 'Dessert' %}
+            <li>{{venue_detail.menus |slice:'1:2'|join:''}}</li>
+            {% endif %}
+            {% if venue_detail.menus != 'Dessert' %}
+            <li>{{venue_detail.menus |slice:'2:3'|join:''}}</li>
+            {% endif %}
+            {% if venue_detail.menus != 'Dessert' %}
+            <li>{{venue_detail.menus |slice:'3:4'|join:''}}</li>
+            {% endif %}
+            {% if venue_detail.menus != 'Dessert' %}
+            <li>{{venue_detail.menus |slice:'4:5'|join:''}}</li>
+            {% endif %}
+          </ul>
+          {% endspaceless %}
+        </div>
+
+        <hr class="my-4" />
+        <h6>How many Guests are possible to accommodate across your Function hall ?</h6>
+        <div class="amenities-list color-text-a">
+        {% spaceless %}
+            <ul class="list-a no-margin">
+              {% if venue_detail.people_count %}
+              <li>{{venue_detail.people_count |slice:'0:1'|join:''}}</li>
+              {% endif %}
+              {% if venue_detail.people_count != '1-49' %}
+              <li>{{venue_detail.people_count |slice:'1:2'|join:''}}</li>
+              {% endif %}
+              {% if venue_detail.people_count != 'Dessert' %}
+              <li>{{venue_detail.people_count |slice:'2:3'|join:''}}</li>
+              {% endif %}
+              {% if venue_detail.people_count != 'Dessert' %}
+              <li>{{venue_detail.people_count |slice:'3:4'|join:''}}</li>
+              {% endif %}
+              {% if venue_detail.people_count != 'Dessert' %}
+              <li>{{venue_detail.people_count |slice:'4:5'|join:''}}</li>
+              {% endif %}
+              {% if venue_detail.people_count != 'Dessert' %}
+              <li>{{venue_detail.people_count |slice:'5:6'|join:''}}</li>
+              {% endif %}
+              {% if venue_detail.people_count != 'Dessert' %}
+              <li>{{venue_detail.people_count |slice:'6:7'|join:''}}</li>
+              {% endif %}
+              {% if venue_detail.people_count != 'Dessert' %}
+              <li>{{venue_detail.people_count |slice:'7:8'|join:''}}</li>
+              {% endif %}
+            </ul>
+        {% endspaceless %}
+    </div>
+    <hr class="my-4" />
+    <h6>What functions are Offered by Venue</h6>
+    <div class="amenities-list color-text-a">
+          {% spaceless %}
+          <ul class="list-a no-margin">
+            {% if venue_detail.select_event != 'dummydata' %}
+            <li>{{venue_detail.select_event |slice:'0:1'|join:''}}</li>
+            {% endif %}
+            {% if venue_detail.select_event != 'dummydata' %}
+            <li>{{venue_detail.select_event |slice:'1:2'|join:''}}</li>
+            {% endif %}
+            {% if venue_detail.select_event != 'dummydata' %}
+            <li>{{venue_detail.select_event |slice:'2:3'|join:''}}</li>
+            {% endif %}
+            {% if venue_detail.select_event != 'dummydata' %}
+            <li>{{venue_detail.select_event |slice:'3:4'|join:''}}</li>
+            {% endif %}
+            {% if venue_detail.select_event != 'dummydata' %}
+            <li>{{venue_detail.select_event |slice:'4:5'|join:''}}</li>
+            {% endif %}
+            {% if venue_detail.select_event != 'dummydata' %}
+            <li>{{venue_detail.select_event |slice:'5:6'|join:''}}</li>
+            {% endif %}
+            {% if venue_detail.select_event != 'dummydata' %}
+            <li>{{venue_detail.select_event |slice:'6:7'|join:''}}</li>
+            {% endif %}
+          </ul>
+          {% endspaceless %}
+    </div>   
+    <hr class="my-4" />
+    <h6>What Other services Offered by Venue</h6>
+    <div class="amenities-list color-text-a">
+          {% spaceless %}
+          <ul class="list-a no-margin">
+            {% if venue_detail.services != 'dummydata' %}
+            <li>{{venue_detail.services |slice:'0:1'|join:''}}</li>
+            {% endif %}
+            {% if venue_detail.services != 'dummydata' %}
+            <li>{{venue_detail.services |slice:'1:2'|join:''}}</li>
+            {% endif %}
+            {% if venue_detail.services != 'dummydata' %}
+            <li>{{venue_detail.services |slice:'2:3'|join:''}}</li>
+            {% endif %}
+            {% if venue_detail.services != 'dummydata' %}
+            <li>{{venue_detail.services |slice:'3:4'|join:''}}</li>
+            {% endif %}
+            {% if venue_detail.services != 'dummydata' %}
+            <li>{{venue_detail.services |slice:'4:5'|join:''}}</li>
+            {% endif %}
+            {% if venue_detail.services != 'dummydata' %}
+            <li>{{venue_detail.services |slice:'5:6'|join:''}}</li>
+            {% endif %}
+            {% if venue_detail.services != 'dummydata' %}
+            <li>{{venue_detail.services |slice:'6:7'|join:''}}</li>
+            {% endif %}
+          </ul>
+          {% endspaceless %}
+    </div>   
+</div>               
+    <!-- End Latest News Section -->
+          <div  id="contact" class="col-md-12">
+            <hr>
+            <div class="row section-t3">
+              <div class="col-sm-12">
+                <div class="title-box-d">
+                  <h3 class="title-d">Contact <span class="color-b"> Information</span></h3>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md- col-lg-4">
+                <div class="ranking">
+                  <h6 class="text-display-7">Rating Breakdown</h6>
+                  <ul class="color-b">
+                      <li class="color-b">
+                          Quality of Service<span>{{venue_detail.Quality_of_service}}<span class="review-star rate-10 show-one"></span></span>
+                      </li>
+                      <li>
+                          Catering Service<span>{{venue_detail.Catering_service}}<span class="review-star rate-10 show-one"></span></span>
+                      </li>
+                      <li>
+                          Response Time<span>{{venue_detail.Response_time}}<span class="review-star rate-10 show-one"></span></span>
+                      </li>
+                      <li>
+                          Overall Rating<span>{{venue_detail.Rating}}<span class="review-star rate-10 show-one"></span></span>
+                      </li>
+                  </ul>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="property-agent">
+                  <h4 class="title-agent"><span class="color-b">{{ venue_detail.owner_name }}</span></h4>
+                  <p class="color-text-a">
+                    {{venue_detail.about_owner}}
+                </p>
+                <ul class="list-unstyled">
+                    <li class="d-flex justify-content-between">
+                        <strong>Open Time:</strong>
+                        <span class="color-text-a color-b">{{venue_detail.open_time}} Hrs</span>
+                    </li>
+                    <li class="d-flex justify-content-between">
+                      <strong>Contact Info:</strong>
+                      <span class="color-text-a">{{venue_detail.mobile}}</span>
+                    </li>
+                    <li class="d-flex justify-content-between">
+                      <strong>Email:</strong>
+                      <span class="color-text-a">{{venue_detail.email}}</span>
+                    </li>
+                    <li class="d-flex justify-content-between">
+                      <strong>Whatsapp No:</strong>
+                      <span class="color-text-a">{{venue_detail.whatsapp_no}}</span>
+                    </li>
+                  </ul>
+                  <br>
+                </div>
+              </div>
+              <div class="col-md-12 col-lg-4" id="contact">
+                {% include 'includes/messages.html' %}
+                <div class="property-contact">
+                  <form class="form-a" action="{% url 'inquiry'%}" method="POST" >
+                    {% csrf_token %}
+                    {% if user.is_authenticated %}
+                    <input type="hidden" name="user_id" value="{{user.id}}">
+                  {% else %}
+                    <input type="hidden" name="user_id" value="0">
+                  {% endif %}
+
+                    <div class="row">
+                      <div class="col-md-12 mb-1">
+                        <div class="form-group">
+                          <input
+                            type="disabled"
+                            class="form-control form-control form-control-a"
+                            id="inputName"
+                            value="{{venue_detail.Venue_name }}"
+                            name='venue_name'
+                            disabled
+                          />
+                        </div>
+                      </div>
+                      <input type="hidden" name="inquiry_id" value="{{venue_detail.id}}">
+                      <div class="col-md-12 mb-1">
+                        <div class="form-group">
+                          <input
+                            type="text"
+                            class="form-control form-control form-control-a"
+                            id="inputName"
+                            placeholder="Name *"
+                            name="name"
+                            {% if user.is_authenticated %} value="{{user.first_name}} {{user.last_name}} "{% endif %} required
+                          />
+                        </div>
+                      </div>
+                      <div class="col-md-12 mb-1">
+                        <div class="form-group center">
+                          <input
+                            type="email"
+                            class="form-control form-control form-control-a"
+                            id="inputEmail1"
+                            placeholder="Email *"
+                            name="email"
+                            {% if user.is_authenticated %} value="{{user.email}} "{% endif %}
+                            required
+                          />
+                        </div>
+                      </div>
+                      <div class="col-md-12 mb-1">
+                        <div class="form-group center">
+                          <input
+                            type="tel"
+                            class="form-control form-control form-control-a"
+                            id="typePhone"
+                            placeholder="Phone no*"
+                            name="phone_no"
+                            required
+                          />
+                        </div>
+                      </div>
+                      <div class="col-md-12 mb-1">
+                        <div class="form-group center">
+                          <input
+                            type="date"
+                            class="form-control form-control form-control-a"
+                            id="inputdate"
+                            placeholder="Date *"
+                            name="date"
+                            required
+                          />
+                        </div>
+                      </div>
+                      <div class="col-md-12 mb-1">
+                        <div class="form-group center">
+                          <div>
+                            <select
+                              class="form-control form-select form-control-a"
+                              id="select your event"
+                              name="event_type"
+                            >
+                              <option default align="center">select your Event</option>
+                              <option value="Wedding">Wedding</option>
+                              <option value="Birthday Party">Birthday Party</option>
+                              <option value="Engagement">Engagement</option>
+                              <option value="Naming Ceremony">Naming Ceremony</option>
+                              <option value="Reception">Reception</option>
+                              <option value="Anniversary">Anniversary</option>
+                              <option value="Others">Others</option>
+                            </select>
+                          </div>
+                        </div>
+                      <div class="col-md-12 mb-1">
+                            <select
+                              class="form-control form-select form-control-a"
+                              id="Guest Count"
+                              name="guest_count"
+                            >
+                              <option default align="center">Guest Count</option>
+                              <option value="Up to 200">Up to 200</option>
+                              <option value="201 - 500">201 - 500</option>
+                              <option value="501 - 1000">501 - 1000</option>
+                              <option value="1001 - 2000">1001 - 2000</option>
+                              <option value="2000 - 5000">2000 - 5000</option>
+                              <option value="5000 - 10000">5000 - 10000</option>
+                            </select>
+                          </div>
+                        </div>
+                      <div class="col-md-12 mb-1">
+                            <select
+                              class="form-control form-select form-control-a"
+                              id="Hall Cost Range *"
+                              name="hall_cost_range"
+                              >
+                              <option default align="center">Hall Cost Range</option>
+                              <option value="Up to 50,000 (only hall rent)">Up to 50,000 (only hall rent)</option>
+                              <option value="50,000 - 1,00,000 (only hall rent)">50,000 - 1,00,000 (only hall rent)</option>
+                              <option value="1,00,000 -2,00,000 (only hall rent)">1,00,000 -2,00,000 (only hall rent)</option>
+                              <option value="2,00,000 - 3,00,000 (only hall rent)">2,00,000 - 3,00,000 (only hall rent)</option>
+                              <option value="3,00,000 - 4,00,000 (only hall rent)">3,00,000 - 4,00,000 (only hall rent)</option>
+                              <option value="4,00,000 (only hall rent)">4,00,000 (only hall rent)</option>
+                            </select>
+                            <div class="form-control-a">
+                              <textarea
+                                id="textMessage"
+                                class="form-control"
+                                placeholder="Note *"
+                                name="note"
+                                cols="35"
+                                rows="1"
+                                required
+                              ></textarea>
+                            </div>
+                            <div class="col-md-12 mt-3" align="center">
+                              <button type="submit" class="btn btn-a" >
+                               Check Availability
+                              </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Property Single-->
+  </main>
+  <!-- End #main -->
+{% endblock maindata %}

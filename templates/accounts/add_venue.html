@@ -1,0 +1,325 @@
+{% extends 'base.html' %}
+{% block title %} | add-venue  {% endblock title %}
+{% block maindata %}
+<!-- ======= Contact Single ======= -->
+<section class="contact">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="intro intro-carousel swiper position-relative rounded">
+            <div class="swiper-wrapper">
+              {% for data in banner %} 
+              <div
+                class="swiper-slide carousel-item-a intro-item bg-image"
+                style="background-image: url({{data.photo.url}})"
+              >
+                <div class="overlay overlay-a"></div>
+                <div class="intro-content display-table">
+                  
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+            <div class="swiper-pagination"></div>
+          </div>
+          <div class='messagelist'>
+            {% include 'includes/messages.html' %}
+          </div>
+        </div>
+       
+        <div class="col-sm-12 section-t8">
+          <div class="title-box">
+            <h2 class="title-a text-center ">Fill The Form</h2>
+          </div>
+          <div class="row">
+            <div class="col-md-7">
+              <form action="{% url 'add_venue' %}" method="POST" >
+                {% csrf_token %}
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        name="vendor_name"
+                        class="form-control form-control-lg form-control-a"
+                        placeholder="{{ request.user.vendor_name }}"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        name="location"
+                        class="form-control form-control-lg form-control-a"
+                        placeholder="location"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                      <input
+                        name="email"
+                        type="email"
+                        class="form-control form-control-lg form-control-a"
+                        placeholder="Your Email"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                      <input
+                        name="Phone"
+                        type="text"
+                        class="form-control form-control-lg form-control-a"
+                        data-mdb-showcounter="true" 
+                        maxlength="10"
+                        placeholder="Your Phone-no"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-12 mb-3">
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        name="hall_title"
+                        class="form-control form-control-lg form-control-a"
+                        placeholder="Function-Hall Title "
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-12 mb-3">
+                    <div class="form-group">
+                      <input
+                        type="url"
+                        name="google_map_link"
+                        class="form-control form-control-lg form-control-a"
+                        placeholder="Function hall link(Google map link)"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-12 mb-3">
+                    <div class="form-group">
+                      <h6>Add Images & of your Venue:</h6>
+                      <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="validatedCustomFile"  name="image1" required>
+                        <input type="file" class="custom-file-input" id="validatedCustomFile" name="image2" required>
+                        <label class="custom-file-label" for="validatedCustomFile"></label>
+                        <div class="invalid-feedback">Example invalid custom file feedback</div>
+                      </div>
+                      <br>
+                      <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="validatedCustomFile" name="image3" required>
+                        <input type="file" class="custom-file-input" id="validatedCustomFile" name="image4" required>
+                        <label class="custom-file-label" for="validatedCustomFile"></label>
+                        <div class="invalid-feedback">Example invalid custom file feedback</div>
+                      </div>
+                    </div>
+                  </div>
+                                   
+                  <div class="col-md-12 mb-3" name="celebrate_events">
+                    <br>
+                    <div class="form-check-inline">
+                        <h6>Events we can celebrate in venue:</h6>
+                        <label class="form-check-label ">
+                          <input type="checkbox" class="form-check-input " value="Birthday_Party"> Birthday-Party
+                        </label>
+                      </div>
+                      <div class="form-check-inline">
+                        <label class="form-check-label">
+                          <input type="checkbox" class="form-check-input" value="Wedding "> Wedding 
+                        </label>
+                      </div>
+                      <div class="form-check-inline">
+                        <label class="form-check-label">
+                          <input type="checkbox" class="form-check-input" value="Engagement" > Engagement
+                        </label>
+                      </div>
+                      <div class="form-check-inline">
+                        <label class="form-check-label">
+                          <input type="checkbox" class="form-check-input" value="Naming_ceremony" > Naming-ceremony
+                        </label>
+                      </div>
+                      <div class="form-check-inline">
+                        <label class="form-check-label">
+                          <input type="checkbox" class="form-check-input" value="Reception" > Reception
+                      </div>
+                      <div class="form-check-inline">
+                        <label class="form-check-label">
+                          <input type="checkbox" class="form-check-input" value="Anniversary" > Anniversary
+                        </label>
+                      </div>
+                      <div class="form-check-inline">
+                        <label class="form-check-label">
+                          <input type="checkbox" class="form-check-input" value="Small_Functions" >Small Functions
+                        </label>
+                      </div>
+                  </div>
+
+                  <div class="col-md-12 mb-3" name="services_features">
+                    <br>
+                    <div class="form-check-inline">
+                        <h6>Extra Services & Features:</h6>
+                        <label class="form-check-label ">
+                          <input type="checkbox" class="form-check-input " value="Decoration"> Decoration
+                        </label>
+                      </div>
+                      <div class="form-check-inline">
+                        <label class="form-check-label">
+                          <input type="checkbox" class="form-check-input" value="DJ "> DJ
+                        </label>
+                      </div>
+                      <div class="form-check-inline">
+                        <label class="form-check-label">
+                          <input type="checkbox" class="form-check-input" value="Catering" > Catering
+                        </label>
+                      </div>
+                      <div class="form-check-inline">
+                        <label class="form-check-label">
+                          <input type="checkbox" class="form-check-input" value="Air_Condition" > Air Condition
+                        </label>
+                      </div>
+                      <div class="form-check-inline">
+                        <label class="form-check-label">
+                          <input type="checkbox" class="form-check-input" value="Free Wifi" > Free Wifi
+                        </label>
+                      </div>
+                      <div class="form-check-inline">
+                        <label class="form-check-label">
+                          <input type="checkbox" class="form-check-input" value="Garden" > Garden
+                        </label>
+                      </div>
+                      <div class="form-check-inline">
+                        <label class="form-check-label">
+                          <input type="checkbox" class="form-check-input" value="Special-menues" > Special Menus
+                        </label>
+                      </div>
+                  </div>
+
+                </div>
+               </div>
+               <div class="col-md-5 section-md-t3">
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                      <select class="form-control form-control-lg form-control-a" id="sel1" name="guest_limit">
+                        <option>Select Guest Limit</option default>
+                          <option value="200-450">200-450 </option>
+                          <option value="450-600">450-600</option>
+                          <option value="600-800">600-800</option>
+                          <option value="800-1000">800-1000</option>
+                          <option value="more than 1000 guests">more than 1000 Guests</option>
+                        </select>
+                  </div>
+                </div>
+                  <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                      <select class="form-control form-control-lg form-control-a" id="sel1" name="per_plate_rupees">
+                          <option>Select Per Plate Rupees (Starts From)</option default>
+                            <option value="100-200" >100-200 rs</option>
+                          <option value="200-300">200-300 rs</option>
+                          <option value="300-450">300-450 rs</option>
+                          <option value="more than 450rs" >more than 450rs</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                  <div class="form-group">
+                    <select class="form-control form-control-lg form-control-a" id="sel1" name='hall_cost_per_day'>
+                      <option>Select Hall Cost per day(Rent per day)</option default>
+                        <option  value="1,000 - 4,500">1000-4,500</option>
+                        <option  value="4,500 - 10,000">4,500-10,000</option>
+                        <option  value="10,000 - 25,000" >10,000-25,000</option>
+                        <option  value="25,000 - 50,000" >25,000-50,000</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                      <select class="form-control form-control-lg form-control-a" id="sel1" name="parking_limit">
+                        <option>Parking vehicle limit</option default>
+                          <option value="100-250" >100-250</option>
+                          <option value="250-450" >250-450</option>
+                          <option value="450-600">450-600</option>
+                          <option value="more than 600" >more than 600</option>
+                        </select>
+                      </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <textarea
+                      name="discription"
+                      class="form-control"
+                      name="Address"
+                      cols="4"
+                      rows="5"
+                      type="Description"
+                      placeholder="Discription"
+                      required
+                      ></textarea>
+                    </div>
+                  </div>
+                  <div class="col-md-12 mb-3" name="food_type">
+                    <br>
+                    <div class="form-check-inline">
+                      <h5>Diet Preferences:</h5>
+                        <label class="form-check-label ">
+                          <input type="checkbox" class="form-check-input " name="food_type" value="Pure-Veg"> Pure Veg
+                        </label>
+                      </div>
+                      <div class="form-check-inline">
+                        <label class="form-check-label">
+                          <input type="checkbox" class="form-check-input"  name="food_type"  value="Non-Veg"> Non-Veg
+                        </label>
+                      </div>
+                      <div class="form-check-inline">
+                        <label class="form-check-label">
+                          <input type="checkbox" class="form-check-input"  name="food_type"  value="both" > Both
+                        </label>
+                      </div>
+                  </div>
+                  <div class="col-md-12 mb-3" name="hall_type">
+                    <br>
+                    <div class="form-check-inline">
+                        <h5>Hall Type:</h5>
+                        <label class="form-check-label ">
+                          <input type="checkbox" class="form-check-input " name="hall_type" value="Banquet Hall"> Banquet Hall
+                        </label>
+                      </div>
+                      <div class="form-check-inline">
+                        <label class="form-check-label">
+                          <input type="checkbox" class="form-check-input"  name="hall_type" value="Function Hall"> Function Hall
+                        </label>
+                      </div>
+                      <div class="form-check-inline">
+                        <label class="form-check-label">
+                          <input type="checkbox" class="form-check-input" name="hall_type" value="both" > both
+                        </label>
+                      </div>
+                  </div>
+                  <div class="col-md-12 text-center">
+                    <button type="submit" class="btn btn-a">
+                      Send For Verification
+                    </button>
+                  </div>
+                </div>
+                  </div>
+                </div>
+              </form>  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Contact Single-->
+</main>
+<!-- End #main -->
+
+{% endblock maindata %}

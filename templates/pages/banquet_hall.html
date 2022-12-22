@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+{% block title %} | banquet_hall  {% endblock title %}
+{% block maindata %}
+
+
+<section class="property-grid grid">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="grid-option">
+            <form>
+              <select class="custom-select">
+                <option selected>All</option>
+                <option value="1">Letest</option>
+                <option value="2">Featured</option>
+                <option value="3">Recommended</option default>
+              </select>
+            </form>
+          </div>
+        </div>
+        <br>
+        <hr>
+        <br>
+        <div class="title-box ">
+          <h2 class="title-a "> Banquet Halls & <span class="color-b"> Function Halls:</span></h2>
+      </div>
+        {% for data in  banquet_hall %}
+        <div class="col-md-4">
+          <div class="card-box-a card-shadow">
+            <div class="img-box-a">
+              <img
+                src="{{data.list_image.url}}"
+                alt=""
+                class="img-a img-fluid"
+              />
+            </div>
+            <div class="card-overlay">
+              <div class="card-overlay-a-content">
+                <div class="card-header-a">
+                  <h2 class="card-title-a">
+                    <a href="{% url 'venue_detail' data.id %}"
+                      >{{data.Venue_name}}<br />
+                      {{data.venue_location}}</a
+                    >
+                  </h2>
+                </div>
+                <div class="card-body-a">
+                  <div class="price-box d-flex">
+                    <span class="price-a">pricing per plate</span>
+                  </div>
+                  <a href="{% url 'venue_detail' data.id %}" class="link-a"
+                    >starts from ₹ {{data.per_plate_prize}}
+                    <span class="bi bi-chevron-right"></span>
+                  </a>
+                </div>
+                <div class="card-footer-a">
+                  <ul class="card-info d-flex justify-content-around">
+                    <li>
+                      <h4 class="card-info-title">Food</h4>
+                    {% if data.Food_Type == Pure_Veg %}
+                     <span
+                      >🟢
+                     </span>
+                    {% endif %}
+                    {% if data.Food_Type  ==  Non_Veg %}
+                     <span
+                      >🔴
+                     </span>
+                    {% else %}
+                     <span
+                      >🟢🔴
+                     </span>
+                    {% endif %}
+                    </li>
+                    <li>
+                      <h4 class="card-info-title">Type of Hall</h4>
+                      <span>{{data.type_of_hall}}</span>
+                    </li>
+                    <li>
+                      <h4 class="card-info-title">🚙🚗🛵</h4>
+                      <span>{{data.Parking_capacity}}</span>
+                    </li>
+                    <li>
+                      <h4 class="card-info-title">🌟🌟🌟</h4>
+                      <span>{{ data.Rating }}</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+      <div class="row">
+        <div class="col-sm-12">
+          <nav class="pagination-a">
+
+            {% if venue_halls.has_other_pages %}
+            <ul class="pagination justify-content-end">
+             {% if venue_halls.has_previous %}
+              <li class="page-item ">
+                <a class="page-link" href="?page={{ venue_halls.previous_page_number }}">
+                  <span class="bi bi-chevron-left"></span>
+                </a>
+              </li>
+              {% else %}
+              <li class="page-item disabled">
+                <a class="page-link" href="#"></a>
+              </li>
+              {% endif %}
+
+              {% for i in venue_halls.paginator.page_range %}
+              {% if venue_halls.number == i %}
+              <li class="page-item">
+                <a class="page-link active" href="#">{{i}}</a>
+              </li>
+              {% else %}
+              <li class="page-item">
+                <a class="page-link" href="?page={{i}}">{{i}}</a>
+              </li>
+              {% endif %}
+              {% endfor %}
+              
+              {% if venue_halls.has_next %}
+              <li class="page-item ">
+                <a class="page-link" href="?page={{ venue_halls.next_page_number }}">
+                  <span class="bi bi-chevron-right"></span>
+                </a>
+              </li>
+              {% else %}
+              <li class="page-item disabled">
+                <a class="page-link" href="#"></a>
+              </li>
+              {% endif %}
+
+            </ul>
+            {% endif %}
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Property Grid Single-->
+</main>
+{% endblock maindata %}

@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% block title %} | vendor-signup  {% endblock title %}
+{% block maindata %}
+{% load static %}
+<link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+<section class="vh-100">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6 text-black">
+        
+        <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
+          
+          <form style="width: 23rem;" action="{% url 'vendor_register' %}" method="POST">
+            {% csrf_token %}
+            {% comment %} {% if form.erros %}
+            {{ form.email.errors }}
+            {{ form.non_field_errors }}
+            {% endif %} {% endcomment %}
+            {% for field in form %}
+            {% if field.errors %}
+                {% for error in field.errors %}
+                    <li  class="fadeout" style="color: red;">{{error}}</li>
+                {% endfor %}
+            {% endif %}
+           {% endfor %}
+            {% include 'includes/messages.html' %}
+            <h3 class="fw-normal mb-1 pb-3" style="letter-spacing: 1px;">Vendor Registration Form</h3>
+            <div class="form-outline">
+              <label class="form-label" for="username">Venue Name:</label>
+              {{ v_form.vendor_name }}
+            </div> 
+
+            <div class="form-outline">
+              <label class="form-label" for="username">username</label>
+              {{ form.username }}
+            </div> 
+
+            <div class="form-outline">
+              <label class="form-label" for="first_Name">First Name</label>
+              {{ form.first_name }}
+            </div>
+
+            <div class="form-outline">
+              <label class="form-label" for="last_Name">Last Name</label>
+              {{ form.last_name }}
+            </div>
+            
+            <div class="form-outline">
+              <label class="form-label" for="email">Email address</label>
+              {{ form.email }}
+            </div>
+            
+  
+              <div class="form-outline">
+                <label class="form-label" for="password">Password</label>
+                {{form.password}}
+              </div>
+
+              <div class="form-outline">
+                <label class="form-label" for="confirm_password">confirm Password</label>
+                {{form.confirm_password}}
+              </div>
+              
+              <div class="pt-1 mb-1">
+                <button class="btn btn-primary btn-rounded btn-block text-center" type="submit">register</button>
+              {% comment %} {% for field in form %}
+              {% if field.errors %}
+                  {% for error in field.errors %}
+                      <li style="color: red;">{{error}}</li>
+                  {% endfor %}
+              {% endif %}
+              {% endfor %}
+               {% endcomment %}
+            </div>
+            <p class="small mb-3 pb-lg-1"><a class="text-muted" href="#!">Forgot password?</a></p>
+            <p>Already have an account? <a href="{% url 'login' %}" class="link-info">Login here</a></p>
+            <h6><p>Are You user ? <a href="{% url 'user_register' %}" class="color-b">Join Our Community now!</a></p></h5>
+            </form>
+            
+          </div>
+          
+        </div>
+        <div class="col-sm-6 px-0 d-none d-sm-block mt-2">
+          <img src="{% static 'assets/img/vendor-signup.png' %}"
+          alt="Login image" class="w-100 vh-100" style="object-fit: cover; object-position: center;">
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  {% endblock maindata %}

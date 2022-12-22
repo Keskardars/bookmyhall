@@ -1,0 +1,64 @@
+body {
+    background-color: rgb(0, 0, 0) !important;
+}
+
+#header {
+    background-color: #eaecec !important;
+    color: tomato !important;
+    box-shadow: 0px 0px 3px 0px #ff0000;
+}
+
+#header a:link,
+#header a:visited {
+    color: black;
+}
+
+div.breadcrumbs {
+    background-color: #1c1f1f;
+}
+
+.module h2,
+.module caption,
+.inline-group h2 {
+    background-color: #1c1f1f;
+}
+
+.login #header {
+    height: auto;
+    width: 400px;
+}
+
+.button.default,
+input[type=submit].default,
+.submit-row input.default {
+    background: #ff0000;
+}
+
+.module h2,
+.module caption,
+.inline-group h2 {
+    border-radius: 6px;
+}
+
+a.section:link,
+a.section:visited {
+    color: tomato !important;
+}
+
+a:link,
+a:visited {
+    color: white;
+}
+
+#content-related .module h2 {
+    color: tomato !important;
+    background-color: #1c1f1f;
+}
+
+.button,
+input[type=submit],
+input[type=button],
+.submit-row input,
+a.button {
+    background-color: tomato;
+}

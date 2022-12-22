@@ -1,0 +1,200 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+    <title>bookmyhall- {% block title %}    {% endblock title %} </title>
+    <meta content="" name="description" />
+    <meta content="" name="keywords" />
+
+    <!-- Favicons -->
+    <link href="{% static 'assets/img/every.png' %}" rel="icon" />
+    <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon" />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="{% static 'assets/vendor/animate.css/animate.min.css' %}" rel="stylesheet" />
+    <link
+      href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}"
+      rel="stylesheet"
+    />
+    <link
+      href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}"
+      rel="stylesheet"
+    />
+    <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet" />
+
+    <!-- Template Main CSS File -->
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet" />
+    <link href="{% static 'assets/css/custom.css' %}" rel="stylesheet" />
+    <link href="{% static 'assets/css/messages.css' %}" rel="stylesheet" />
+
+    <!-- =======================================================
+  * Template Name: EstateAgency - v4.9.1
+  * Template URL: https://bootstrapmade.com/real-estate-agency-bootstrap-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap" rel="stylesheet">
+  </head>
+{% include 'includes/navbar.html' %}
+
+{% block maindata %}
+
+{% endblock maindata %}
+
+<body>
+  <!-- ======= Property Search Section ======= -->
+  <div class="click-closed"></div>
+  <!--/ Form Search Star /-->
+  <div class="box-collapse">
+    <div class="title-box-d">
+      <h3 class="title-d">Search Venue</h3>
+    </div>
+    <span class="close-box-collapse right-boxed bi bi-x"></span>
+    <div class="box-collapse-wrap form">
+      <form class="form-a" action="{% url 'search' %}" method="GET">
+        <div class="row">
+          <div class="col-md-12 mb-2">
+            <div class="form-group">
+              <label class="pb-2" for="venue_name">Name</label>
+              <input
+                type="search"
+                class="form-control form-control-lg form-control-a"
+                placeholder="type keyword(s) here. Eg. Function_hall"
+                value=""
+                name='keyword'
+              />
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group mt-3">
+              <label class="pb-2" for="Select Your Event"
+                >Select Your Event</label
+              >
+              <select
+                class="form-control form-select form-control-a"
+                id="select your event"
+                name="event"
+              > <option selected="true" disabled="disabled" >Select Your Event</option>
+                <option value="Wedding">Wedding</option>
+                <option value="Birthday Party">Birthday Party</option>
+                <option value="Engagement">Engagement</option>
+                <option value="Naming Ceremony">Naming Ceremony</option>
+                <option value="Reception">Reception</option>
+                <option value="Anniversary">Anniversary</option>
+                <option value="Small Function">Small Function</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group mt-3">
+              <label class="pb-2" for="city">City</label>
+              <select
+                class="form-control form-select form-control-a"
+                id="city"
+                name="city"
+              > {% for city in city_search %}
+                <option value="{{city}}">{{city}}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group mt-3">
+              <label class="pb-2" for="Guest Count">Guest Count</label>
+              <select
+                class="form-control form-select form-control-a"
+                id="guest count"
+                name="people_count"
+              >
+              <option selected="true" disabled="disabled" >Guest Count</option>
+                <option value="1-49">1-49</option>
+                <option value="50-99">50-99</option>
+                <option value="100-149">100-149</option>
+                <option value="149-250">149-250</option>
+                <option value="250-399">250-399</option>
+                <option value="400-499">400-499</option>
+                <option value="500-799">500-799</option>
+                <option value="More Than 1000">More Than 1000</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group mt-3">
+              <label class="pb-2" for="garages">State</label>
+              <select
+                class="form-control form-select form-control-a"
+                id="state"
+                class="state"
+              >
+                <option value="Maharashtra">Maharashtra</option>
+                
+              </select>
+            </div>
+          </div> 
+          <div class="col-md-6 mb-2">
+            <div class="form-group mt-3">
+              <label class="pb-2" for="Hall Rent Cost">Hall Rent Cost</label>
+              <select
+                class="form-control form-select form-control-a"
+                id="hall rent cost"
+                class="Hall_cost"
+                name="Hallcost"
+              > {% for Hallcost in Hall_rent_cost %}
+                <option value="{{Hallcost}}">{{Hallcost}}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group mt-3">
+              <label class="pb-2" for="Country">Diet Preferences</label>
+              <select
+                class="form-control form-select form-control-a"
+                id="Diet Preferences"
+                name="Food_type"
+              > {% for diet in Food_type_search %}
+                <option value="{{diet}}">{{diet}}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </div> 
+          <div class="col-md-12">
+            <a href="{% url 'search' %}"><button type="submit" class="btn btn-b">Search Availability</button></a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- End Property Search Section -->
+
+
+{% include 'includes/footer.html' %}
+<div id="preloader"></div>
+<a
+  href="#"
+  class="back-to-top d-flex align-items-center justify-content-center"
+  ><i class="bi bi-arrow-up-short"></i
+></a>
+
+<!-- Vendor JS Files -->
+<script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+
+<!-- Template Main JS File -->
+<script src="{% static 'assets/js/main.js' %}"></script>
+<script src="{% static 'assets/js/message.js' %}"></script>
+</body>
+</html>

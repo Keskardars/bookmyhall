@@ -1,0 +1,488 @@
+{% extends 'base.html' %}
+{% block title %} | Home  {% endblock title %}
+{% block maindata %}
+{% load static %}
+    <!-- ======= Intro Section ======= -->
+    <div class="intro intro-carousel swiper position-relative">
+      <div class="swiper-wrapper">
+        {% for data in banner %} 
+        <div
+          class="swiper-slide carousel-item-a intro-item bg-image"
+          style="background-image: url({{data.photo.url}})"
+        >
+        <div class="overlay overlay-a"></div>
+        <div class="intro-content display-table">
+          <div class="table-cell">
+            <div class="container">
+              <div class="row">
+                  <div class="col-lg-8">
+                    <div class="intro-body">
+                      <p class="intro-title-top">
+                        {{data.city}} <br />
+                        {{data.pincode}}
+                      </p>
+                      <h1 class="intro-title mb-4">
+                        <span class="color-b">{{data.highlight_title}}</span>{{data.Title}}
+                      </h1>
+                      <p class="intro-subtitle intro-price">
+                        <a href="{% url 'venue_list' %}"
+                          ><span class="price-a btn btn-b">Check Availability</span></a
+                        >
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+    <!-- End Intro Section -->
+
+    <!-- <main id="main"> -->
+      <!-- ======= Services Section ======= -->
+      <!-- <section class="section-services section-t8">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="title-wrap d-flex justify-content-between">
+                <div class="title-box">
+                  <h2 class="title-a">Our Services</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="card-box-c foo">
+                <div class="card-header-c d-flex">
+                  <div class="card-box-ico">
+                    <span class="bi bi-cart"></span>
+                  </div>
+                  <div class="card-title-c align-self-center">
+                    <h2 class="title-c">Lifestyle</h2>
+                  </div>
+                </div>
+                <div class="card-body-c">
+                  <p class="content-c">
+                    Sed porttitor lectus nibh. Cras ultricies ligula sed magna
+                    dictum porta. Praesent sapien massa, convallis a
+                    pellentesque nec, egestas non nisi.
+                  </p>
+                </div>
+                <div class="card-footer-c">
+                  <a href="#" class="link-c link-icon"
+                    >Read more
+                    <span class="bi bi-chevron-right"></span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card-box-c foo">
+                <div class="card-header-c d-flex">
+                  <div class="card-box-ico">
+                    <span class="bi bi-calendar4-week"></span>
+                  </div>
+                  <div class="card-title-c align-self-center">
+                    <h2 class="title-c">Loans</h2>
+                  </div>
+                </div>
+                <div class="card-body-c">
+                  <p class="content-c">
+                    Nulla porttitor accumsan tincidunt. Curabitur aliquet quam
+                    id dui posuere blandit. Mauris blandit aliquet elit, eget
+                    tincidunt nibh pulvinar a.
+                  </p>
+                </div>
+                <div class="card-footer-c">
+                  <a href="#" class="link-c link-icon"
+                    >Read more
+                    <span class="bi bi-calendar4-week"></span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card-box-c foo">
+                <div class="card-header-c d-flex">
+                  <div class="card-box-ico">
+                    <span class="bi bi-card-checklist"></span>
+                  </div>
+                  <div class="card-title-c align-self-center">
+                    <h2 class="title-c">Sell</h2>
+                  </div>
+                </div>
+                <div class="card-body-c">
+                  <p class="content-c">
+                    Sed porttitor lectus nibh. Cras ultricies ligula sed magna
+                    dictum porta. Praesent sapien massa, convallis a
+                    pellentesque nec, egestas non nisi.
+                  </p>
+                </div>
+                <div class="card-footer-c">
+                  <a href="#" class="link-c link-icon"
+                    >Read more
+                    <span class="bi bi-chevron-right"></span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section> -->
+      <!-- End Services Section -->
+
+      <!-- ======= Latest Properties Section ======= -->
+      <section class="section-property section-t8">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="title-wrap d-flex justify-content-between">
+                <div class="title-box ">
+                  <h2 class="title-a "> Featured Function & Banquet  Halls with <span class="color-b"> highest Ratings :</span></h2>
+                </div>
+                <div class="title-link">
+                  <a href="{% url 'by_rating' %}"
+                  >
+                  <span class="bi bi-chevron-right"></span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div id="property-carousel" class="swiper">
+          <div class="swiper-wrapper">
+            {% for data in best_halls %}
+            <div class="carousel-item-b swiper-slide">
+              <div class="card-box-a card-shadow">
+                <div class="img-box-a">
+                  <img
+                  src="{{data.list_image.url}}"
+                  alt=""
+                  class="img-a img-fluid"
+                  style="min-height:260px; max-height: 450px;"
+                  />
+                </div>
+                  <div class="card-overlay">
+                    <div class="card-overlay-a-content">
+                      <div class="card-header-a">
+                        <h2 class="card-title-a">
+                          <a href="{% url 'venue_detail' data.id %}"
+                            >{{ data.Venue_name}}<br />
+                            </a
+                          >
+                        </h2>
+                      </div>
+                      <div class="card-body-a">
+                        <div class="price-box d-flex">
+                          <span class="price-a">pricing per plate</span>
+                        </div>
+                        <a href="{% url 'venue_detail' data.id %}" class="link-a"
+                          >starts from ₹ {{data.per_plate_prize}}
+                          <span class="bi bi-chevron-right"></span>
+                        </a>
+                      </div>
+                      <div class="card-footer-a">
+                        <ul class="card-info d-flex justify-content-around">
+                          <li>
+                            <h4 class="card-info-title">Food</h4>
+                          {% if data.Food_Type == Pure_Veg %}
+                           <span
+                            >🟢
+                           </span>
+                          {% endif %}
+                          {% if data.Food_Type  ==  Non_Veg %}
+                           <span
+                            >🔴
+                           </span>
+                          {% else %}
+                           <span
+                            >🟢🔴
+                           </span>
+                          {% endif %}
+                          </li>
+                          <li>
+                            <h4 class="card-info-title">Type of Hall</h4>
+                            <span>{{data.type_of_hall}}</span>
+                          </li>
+                          <li>
+                            <h4 class="card-info-title">🚙🚗🛵</h4>
+                            <span>{{data.Parking_capacity}}</span>
+                          </li>
+                          <li>
+                            <h4 class="card-info-title">🌟🌟🌟</h4>
+                            <span>{{ data.Rating }}</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+              <!-- End carousel item -->
+            </div>
+          </div>
+          <div class="propery-carousel-pagination carousel-pagination"></div>
+        </div>
+      </section>
+
+      <section class="section-property section-t8">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="title-wrap d-flex justify-content-between">
+                <div class="title-box ">
+                  <h2 class="title-a ">Function & Banquet  Halls Offered in <span class="color-b">affordable pricing :</span></h2>
+                </div>
+                <div class="title-link">
+                  <a href="{% url 'by_price' %}"
+                  >
+                  <span class="bi bi-chevron-right"></span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="property-carousel" class="swiper">
+          <div class="swiper-wrapper">
+            {% for var in By_pricing %}
+            <div class="carousel-item-b swiper-slide">
+              <div class="card-box-a card-shadow">
+                <div class="img-box-a">
+                  <img
+                  src="{{var.list_image.url}}"
+                  alt=""
+                  class="img-a img-fluid"
+                  />
+                </div>
+                  <div class="card-overlay">
+                    <div class="card-overlay-a-content">
+                      <div class="card-header-a">
+                        <h2 class="card-title-a">
+                          <a href="{% url 'venue_detail' var.id %}"
+                            >{{ var.Venue_name}} <br />
+                            </a
+                          >
+                        </h2>
+                      </div>
+                      <div class="card-body-a">
+                        <div class="price-box d-flex">
+                          <span class="price-a">pricing per plate</span>
+                        </div>
+                        <a href="#" class="link-a"
+                          >starts from ₹ {{var.per_plate_prize}}
+                          <span class="bi bi-chevron-right"></span>
+                        </a>
+                      </div>
+                      <div class="card-footer-a">
+                        <ul class="card-info d-flex justify-content-around">
+                          <li>
+                            <h4 class="card-info-title">Food</h4>
+                          {% if var.Food_Type == Pure_Veg %}
+                           <span
+                            >🟢
+                           </span>
+                          {% endif %}
+                          {% if var.Food_Type  ==  Non_Veg %}
+                           <span
+                            >🔴
+                           </span>
+                          {% else %}
+                           <span
+                            >🟢🔴
+                           </span>
+                          {% endif %}
+                          </li>
+                          <li>
+                            <h4 class="card-info-title">Type of Hall</h4>
+                            <span>{{var.type_of_hall}}</span>
+                          </li>
+                          <li>
+                            <h4 class="card-info-title">🚙🚗🛵</h4>
+                            <span>{{var.Parking_capacity}}</span>
+                          </li>
+                          <li>
+                            <h4 class="card-info-title">🌟🌟🌟</h4>
+                            <span>{{ var.Rating }}</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+              <!-- End carousel item -->
+            </div>
+          </div>
+          <div class="propery-carousel-pagination carousel-pagination"></div>
+        </div>
+      </section>
+      <!-- End Latest Properties Section -->
+
+      <!-- ======= Latest News Section ======= -->
+      <section class="section-property section-t8">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="title-wrap d-flex justify-content-between">
+                <div class="title-box ">
+                  <h2 class="title-a ">Banquet & Function Halls <span class="color-b">closest to city :</span></h2>
+                </div>
+                <div class="title-link">
+                  <a href="{% url 'banquet_hall' %}"
+                  >
+                  <span class="bi bi-chevron-right"></span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="property-carousel" class="swiper">
+          <div class="swiper-wrapper">
+            {% for data in By_Type_of_Hall %}
+            <div class="carousel-item-b swiper-slide">
+              <div class="card-box-a card-shadow">
+                <div class="img-box-a">
+                  <img
+                  src="{{data.list_image.url}}"
+                  alt=""
+                  class="img-a img-fluid"
+                  />
+                </div>
+                  <div class="card-overlay">
+                    <div class="card-overlay-a-content">
+                      <div class="card-header-a">
+                        <h2 class="card-title-a">
+                          <a href="{% url 'venue_detail' data.id %}"
+                            >{{ data.Venue_name}} <br />
+                            </a
+                          >
+                        </h2>
+                      </div>
+                      <div class="card-body-a">
+                        {% comment %} <div class="price-box d-flex">
+                          <span class="price-a">pricing per plate</span>
+                        </div> {% endcomment %}
+                        {% comment %} <a href="#" class="link-a"
+                          >starts from ₹ {{data.per_plate_prize}}
+                          <span class="bi bi-chevron-right"></span>
+                        </a> {% endcomment %}
+                      </div>
+                      <div class="card-footer-a">
+                        <ul class="card-info d-flex justify-content-around">
+                          <li>
+                            <h4 class="card-info-title">Food</h4>
+                          {% if data.Food_Type == Pure_Veg %}
+                           <span
+                            >🟢
+                           </span>
+                          {% endif %}
+                          {% if data.Food_Type  ==  Non_Veg %}
+                           <span
+                            >🔴
+                           </span>
+                          {% else %}
+                           <span
+                            >🟢🔴
+                           </span>
+                          {% endif %}
+                          </li>
+                          <li>
+                            <h4 class="card-info-title">Type of Hall</h4>
+                            <span>{{data.type_of_hall}}</span>
+                          </li>
+                          <li>
+                            <h4 class="card-info-title">🚙🚗🛵</h4>
+                            <span>{{data.Parking_capacity}}</span>
+                          </li>
+                          <li>
+                            <h4 class="card-info-title">🌟🌟🌟</h4>
+                            <span>{{ data.Rating }}</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+              <!-- End carousel item -->
+            </div>
+          </div>
+          <div class="propery-carousel-pagination carousel-pagination"></div>
+        </div>
+      </section>   
+      <!-- End Latest News Section -->
+
+      <!-- ======= Testimonials Section ======= -->
+      <section class="section-testimonials section-t8 nav-arrow-a">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="title-wrap d-flex justify-content-between">
+                <div class="title-box">
+                  <h2 class="title-a"><span class="color-b"> Testimonials :</span></h2>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="testimonial-carousel" class="swiper">
+            <div class="swiper-wrapper">
+              {% for data in testmonial %}
+              <div class="carousel-item-a swiper-slide">
+                <div class="testimonials-box">
+                  <div class="row">
+                    <div class="col-sm-12 col-md-6">
+                      <div class="testimonial-img">
+                        <img
+                          src="{{data.image.url}}"
+                          alt=""
+                          class="img-fluid"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                      <div class="testimonial-ico">
+                        <i class="bi bi-chat-quote-fill"></i>
+                      </div>
+                      <div class="testimonials-content">
+                        <p class="testimonial-text">
+                         {{data.subject}}
+                        </p>
+                      </div>
+                      <div class="testimonial-author-box">
+                        <img
+                          src="{{data.image.url}}"
+                          alt=""
+                          class="testimonial-avatar"
+                        />
+                        <h5 class="testimonial-author">{{data.couple_name}}</h5>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> 
+              {% endfor %}
+              <!-- End carousel item -->
+
+              <!-- End carousel item -->
+            </div>
+          </div>
+          <div
+            class="testimonial-carousel-pagination carousel-pagination"
+          ></div>
+        </div>
+      </section>
+      <!-- End Testimonials Section -->
+      <!-- End Agents Section -->
+    </main>
+    <!-- End #main -->
+{% endblock maindata %}

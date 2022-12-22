@@ -1,0 +1,11 @@
+{% extends 'admin/base.html' %}
+{% block branding %}
+{% load static %}
+<h1 id="head">
+    <a href="/admin"><img src="{% static 'assets/img/nokka.png' %}" alt="" class="brand_img" height="80px" width="300px"></a>
+</h1>
+{% endblock branding %}
+]
+{% block extrastyle %}
+<link rel="stylesheet" href="{% static 'assets/css/admin.css' %}">
+{% endblock extrastyle %}

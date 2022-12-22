@@ -1,0 +1,176 @@
+{% extends 'base.html' %}
+{% block title %} | vendor-dashboard {% endblock title %}
+{% block maindata %}
+{% load static %}
+<main id="main">
+    <!-- ======= Intro Single ======= -->
+    <section class="intro-single">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8">
+            <div class="title-single-box">
+              <h1 class="title-single">Hello {{user.username}}</h1>
+              <span class="color-text-a">Booking And Management {{user.get_role}}</span>
+            </div>
+            
+          </div>
+          <div class="col-md-12 col-lg-4 ">
+            <nav
+              aria-label="breadcrumb"
+              class="breadcrumb-box d-flex justify-content-lg-end"
+            >
+              <ol class="breadcrumb ">
+                <li class="me-2">
+                  <a href="{% url 'logout' %}"><button type="button" class="btn btn-danger px-3 ">
+                    Sign out
+                </button></a>
+                </li>
+                <li class="breadcrumb-item " aria-current="page">
+                  <a href="{% url 'add_venue' %}"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+                    Add Your Business
+                </button></a>
+                </li>
+                <!-- Button trigger modal -->
+              </ol>
+          </nav>
+      </div>
+      </div>
+      <br>
+      <div class='messagelist'>
+      {% include 'includes/messages.html' %}
+      </div>
+       <br>
+      <div class="mask" >
+      <!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light mt-2">
+  <!-- Container wrapper -->
+  <div class="container">
+    <!-- Navbar brand -->
+    <!-- Toggle button -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-mdb-toggle="collapse"
+      data-mdb-target="#navbarButtonsExample"
+      aria-controls="navbarButtonsExample"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Collapsible wrapper -->
+    <div class="collapse navbar-collapse" id="navbarButtonsExample">
+      <!-- Left links -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      </ul>
+      <!-- Left links -->
+    </div>
+    <!-- Collapsible wrapper -->
+  </div>
+  <!-- Container wrapper -->
+</nav>
+<!-- Navbar -->
+</section>
+    <!-- End Intro Single-->
+    <!-- =======  Blog Grid ======= -->
+   <section class="news-grid grid">
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="card mb-4">
+            <div class="card-body text-center">
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+                class="rounded-circle img-fluid" style="width: 150px;">
+              <h5 class="my-3">{{user.first_name}}</h5>
+              <p class="text-muted mb-1">{{user.last_name}}</p>
+              <p class="text-muted mb-4">{{user.email}}</p>
+              <div class="d-flex justify-content-center mb-2">
+                <button type="button" class="btn btn-primary">Edit</button>
+                <button type="button" class="btn btn-outline-primary ms-1">Message</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-8">
+          <div class="card mb-4">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Full Name</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{user.first_name}} {{user.last_name}}</p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Email</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{user.email}}</p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Phone</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{user.phone}}</p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Mobile</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{user.phone}}</p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Address</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% if vendor_inquiry %}
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">full name</th>
+            <th scope="col">phone no</th>
+            <th scope="col">email</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for inquiry in vendor_inquiry %}
+          <tr>
+            <th scope="row">{{inquiry.name}}</th>
+            <td>{{inquiry.phone}}</td>
+            <td>{{inquiry.email}}</td>
+          </tr>  
+          {% endfor %}
+        </tbody>
+      </table>
+      {% else %}
+      <h4>You have no inquiries</h4>
+      {% endif %}
+    </div>
+    </section>
+    <!-- End Blog Grid-->
+  </div>
+  
+  </main>
+  <!-- End #main -->
+
+{% endblock maindata %}
